@@ -16,4 +16,7 @@ jobs:
         node-version: '14.x'
     - name: Install node dependencies
       run: npm install
-    - uses: ./
+    - name: Hello world action step
+      id: hello
+      with:
+          who-to-greet: 'Myself'
