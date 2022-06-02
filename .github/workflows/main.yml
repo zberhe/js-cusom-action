@@ -5,20 +5,19 @@ on: [push]
 #   - cron: "0 0 * * *" # triggers every midnight
 
 jobs:
-  build:
+  hello_world_job:
     runs-on: ubuntu-latest
+    name: A job to say hello
     steps:
-    - uses: actions/checkout@v2
- 
-    - name: Use Node
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14.x'
-    - name: Install node dependencies
-      run: npm install
-    - name: Hello world action step
-      id: hello
-      with:
+      # To use this repository's private action,
+      # you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Hello world action step
+        uses: ./ # Uses an action in the root directory
+        id: hello
+        with:
           who-to-greet: 'Myself'
-    - name: Get the output time
-      run: echo "The time was ${{ steps.hello.outputs.time }}"
+      # Use the output from the `hello` step
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
