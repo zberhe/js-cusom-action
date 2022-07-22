@@ -1,35 +1,10 @@
-name: js-custom
-
 on: [push]
-#   schedule:
-#   - cron: "0 0 * * *" # triggers every midnight
 
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
     name: A job to say hello
     steps:
-      - name: package 
-        run: |
-          echo "name: ${{ steps.package.outputs.name }}"
-          echo "version: ${{ steps.package.outputs.version }}"
-          echo "npmjs-link: ${{ steps.package.outputs.npmjs-link }}"
-      # To use this repository's private action,
-      # you must check out the repository
-#       - name: Checkout
-#         uses: actions/checkout@v3
-#       - name: Hello world action step
-#         uses: ./ # Uses an action in the root directory
-#         id: hello
-#         with:
-#           who-to-greet: 'Myself'
-#       # Use the output from the `hello`
-#       - name: Get the output time
-#         run: echo "The time was ${{ outputs.name.description }}"
-#       - name: Get the output name
-#         run: echo "The name was ${{ steps.hello.outputs.name }}"
-        
-#         - name: Get package info
-#   id: package
-#   uses: codex-team/action-nodejs-package-info@v1
-
+      # Use the output from the `hello` step
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.name }}"
