@@ -1,15 +1,41 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+# name: 'Hello World'
+# description: 'Greet someone and record the time'
+# inputs:
+#   who-to-greet:  # id of input
+#     description: 'Who to greet'
+#     required: true
+#     default: 'World'
+# outputs:
+#   time: # id of output
+#     description: 'The time we greeted you'
+#   name: # id of output
+#     description: 'The name who greeted you'
+# runs:
+#   using: 'node16'
+#   main: 'dist/index.js'
+
+name: 'Get package info'
+description: 'Action for getting information from package.json file'
+branding:
+  icon: 'box'
+  color: 'red'
+
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
-    required: true
-    default: 'World'
+  path:
+    description: 'Path to package.json file'
+    required: false
+    default: ./
+
 outputs:
-  time: # id of output
-    description: 'The time we greeted you'
-  name: # id of output
-    description: 'The name who greeted you'
+  name:
+    description: 'Package name'
+
+  version:
+    description: 'Package version'
+
+  npmjs-link:
+    description: 'Link to npmjs.com package page'
+
 runs:
-  using: 'node16'
+  using: 'node12'
   main: 'dist/index.js'
